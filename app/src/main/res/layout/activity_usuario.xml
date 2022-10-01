@@ -24,36 +24,37 @@
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="195dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="#1196FF"
                 app:srcCompat="@drawable/usu" />
 
-            <TextView
-                android:id="@+id/etusu"
+            <EditText
+                android:id="@+id/Edusu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Usuario"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/etnombre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:hint="Nombre"
-                android:textSize="18sp" />
+                android:ems="10"
+                android:hint="usuario"
+                android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/etcorreousu"
+                android:id="@+id/ednombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:ems="10"
-                android:hint="Correo"
+                android:hint="Nombre"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/edcorreo2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="correo"
                 android:inputType="textEmailAddress" />
 
             <EditText
-                android:id="@+id/etclaveusu"
+                android:id="@+id/jetclave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -62,7 +63,7 @@
                 android:inputType="textPassword" />
 
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/cbActivo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -75,23 +76,24 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btnadicionar"
+                    android:id="@+id/btnguardar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#1196ff"
-                    android:text="Adcionar"
+                    android:onClick="Guardar"
+                    android:text="Guardar"
                     app:cornerRadius="10dp" />
 
                 <Button
-                    android:id="@+id/btnmodificar"
+                    android:id="@+id/btneliminar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#1196ff"
-                    android:text="Modificar"
+                    android:text="Eliminar"
                     app:cornerRadius="10dp" />
 
             </LinearLayout>
@@ -104,12 +106,13 @@
 
                 <Button
                     android:id="@+id/btnconsultar"
-                    android:layout_width="wrap_content"
+                    android:layout_width="97dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#1196ff"
-                    android:gravity="center|center_vertical"
+                    android:gravity="center"
+                    android:onClick="Consultar"
                     android:text="Consultar"
                     app:cornerRadius="10dp" />
 
@@ -131,22 +134,24 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button6"
+                    android:id="@+id/btncancelar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#1196ff"
+                    android:onClick="Limpiar"
                     android:text="Cancelar"
                     app:cornerRadius="10dp" />
 
                 <Button
-                    android:id="@+id/button8"
+                    android:id="@+id/btnregresar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#1196ff"
+                    android:onClick="Regresar"
                     android:text="Regresar"
                     app:cornerRadius="10dp" />
             </LinearLayout>
