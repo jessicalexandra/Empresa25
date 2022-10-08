@@ -202,4 +202,44 @@ public class UsuarioActivity extends AppCompatActivity implements Response.Liste
 
         }
     }
+
+    public void Anular (View view) {
+        usr = jetusuario.getText().toString();
+
+        if (usr.isEmpty()) {
+            Toast.makeText(this, "El usuario es requerido", Toast.LENGTH_SHORT).show();
+            jetusuario.requestFocus();
+        } else {
+            if (sw == 0) {
+                url = "http://172.16.60.31:8080/WebServices/anula.php";
+                StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                Limpiar_Campos();
+                                Toast.makeText(getApplicationContext(), "Registro de usuario anulado", Toast.LENGTH_LONG).show();
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(getApplicationContext(), "Registro de usuario no anulado!", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                ) {
+                    @Override
+                    protected Map<String, String> getParams() {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("usr", jetusuario.getText().toString().trim());
+                        return params;
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(this);
+                requestQueue.add(postRequest);
+
+            }
+
+
+        }
+    }
 }

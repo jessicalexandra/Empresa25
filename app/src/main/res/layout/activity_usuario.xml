@@ -124,6 +124,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#1196ff"
+                    android:onClick="Anular"
                     android:text="Anular"
                     app:cornerRadius="10dp" />
             </LinearLayout>
