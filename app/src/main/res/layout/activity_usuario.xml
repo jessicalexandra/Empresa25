@@ -93,6 +93,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#1196ff"
+                    android:onClick="Eliminar"
                     android:text="Eliminar"
                     app:cornerRadius="10dp" />
 
