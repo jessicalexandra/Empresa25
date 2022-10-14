@@ -117,6 +117,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#03A9F4"
+                    android:onClick="Guardar"
                     android:text="GUARDAR"
                     android:textSize="16sp"
                     app:cornerRadius="5dp" />
@@ -137,6 +138,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#03A9F4"
+                    android:onClick="Consultar"
                     android:text="Consultar"
                     android:textSize="16sp"
                     app:cornerRadius="20dp" />
@@ -148,6 +150,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_weight="2"
                     android:backgroundTint="#03A9F4"
+                    android:onClick="Anular"
                     android:text="Anular"
                     android:textSize="16sp"
                     app:cornerRadius="20dp" />
