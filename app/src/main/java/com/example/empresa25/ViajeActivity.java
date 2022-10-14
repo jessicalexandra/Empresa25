@@ -46,6 +46,7 @@ public class ViajeActivity extends AppCompatActivity implements Response.Listene
         etValor = findViewById(R.id.etValor);
         cbActivo = findViewById(R.id.cbActivo);
         sw = 0;
+        rq =Volley.newRequestQueue(this);
     }
 
     @Override
@@ -103,9 +104,9 @@ public class ViajeActivity extends AppCompatActivity implements Response.Listene
                 @Override
                 protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<String, String>();
-                    params.put("CodigoViaje", etCodviaje.getText().toString().trim());
-                    params.put("CiudadDestino", etDestino.getText().toString().trim());
-                    params.put("Cantidad", etCantidad.getText().toString().trim());
+                    params.put("codigo", etCodviaje.getText().toString().trim());
+                    params.put("destino", etDestino.getText().toString().trim());
+                    params.put("cantidad", etCantidad.getText().toString().trim());
                     params.put("valor", etValor.getText().toString().trim());
                     return params;
                 }
@@ -124,7 +125,7 @@ public class ViajeActivity extends AppCompatActivity implements Response.Listene
             Toast.makeText(this, "codigo es requerido para la busqueda", Toast.LENGTH_SHORT).show();
             etCodviaje.requestFocus();
         } else {
-            url = "http://172.16.60.31:8080/WebServices/viaje/consulta.php=" + codigo;
+                url = "http://172.16.60.31:8080/WebServices/viaje/consulta.php?codigo=" + codigo;
             jrq = new JsonObjectRequest(Request.Method.GET, url, null, this, this);
             rq.add(jrq);
         }
@@ -134,15 +135,15 @@ public class ViajeActivity extends AppCompatActivity implements Response.Listene
     @Override
     public void onResponse(JSONObject response) {
         sw = 1;
-        Toast.makeText(this, "codigo registrado", Toast.LENGTH_SHORT).show();
         JSONArray jsonArray = response.optJSONArray("datos");
         JSONObject jsonObject = null;
 
         try {
             jsonObject = jsonArray.getJSONObject(0);// posicion o del arreglo
-            etCodviaje.setText(jsonObject.optString("CodigoViaje"));
-            etDestino.setText(jsonObject.optString("CiudadDestino"));
-            etCantidad.setText(jsonObject.optString("Cantidad"));
+            etCodviaje.setText(jsonObject.optString("codigo"));
+            etDestino.setText(jsonObject.optString("destino"));
+            etCantidad.setText(jsonObject.optString("cantidad"));
+            etValor.setText(jsonObject.optString("valor"));
             if (jsonObject.optString("activo").equals("si"))
                 cbActivo.setChecked(true);
             else {
@@ -156,48 +157,6 @@ public class ViajeActivity extends AppCompatActivity implements Response.Listene
     public void Regresar(View view) {
         Intent intentlogin = new Intent(this, MainActivity.class);
         startActivity(intentlogin);
-    }
-
-    public void Eliminar(View view) {
-        codigo = etCodviaje.getText().toString();
-
-        if (codigo.isEmpty()) {
-            Toast.makeText(this, "El codigo es requerido", Toast.LENGTH_SHORT).show();
-            etCodviaje.requestFocus();
-        } else {
-            if (sw == 0) {
-                url = "http://172.16.60.31:8080/WebServices/viaje/elimina.php";
-                StringRequest postRequest = new StringRequest(Request.Method.POST, url,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                limpiarCampos();
-                                Toast.makeText(getApplicationContext(), "Codigo  de destino eliminado", Toast.LENGTH_LONG).show();
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(getApplicationContext(), "codigo de destino incorrecto!", Toast.LENGTH_LONG).show();
-                            }
-                        }
-                ) {
-                    @Override
-                    protected Map<String, String> getParams() {
-                        Map<String, String> params = new HashMap<String, String>();
-                        params.put("codigo", etCodviaje.getText().toString().trim());
-                        return params;
-                    }
-                };
-                RequestQueue requestQueue = Volley.newRequestQueue(this);
-                requestQueue.add(postRequest);
-
-            }
-
-
-        }
-
-
     }
 
     public void Anular (View view) {

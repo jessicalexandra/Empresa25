@@ -170,7 +170,20 @@
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#03A9F4"
+                    android:onClick="Regresar"
                     android:text="Regresar"
+                    android:textSize="16sp"
+                    app:cornerRadius="20dp" />
+
+                <Button
+                    android:id="@+id/btnCancelar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#03A9F4"
+                    android:onClick="cancelar"
+                    android:text="Cancelar"
                     android:textSize="16sp"
                     app:cornerRadius="20dp" />
             </LinearLayout>
